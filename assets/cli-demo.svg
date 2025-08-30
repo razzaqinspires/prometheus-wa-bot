@@ -1,0 +1,42 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="700" height="400">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .term-container { background-color: #282a36; color: #f8f8f2; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 14px; padding: 15px; border-radius: 5px; line-height: 1.5; }
+        .term-line { white-space: pre; }
+        .prompt { color: #50fa7b; }
+        .path { color: #8be9fd; }
+        .cmd { color: #f8f8f2; }
+        .header { color: #ff79c6; font-weight: bold; }
+        .label { font-weight: bold; }
+        .val-green { color: #50fa7b; }
+        .val-yellow { color: #f1fa8c; }
+        .val-cyan { color: #8be9fd; }
+        .val-red { color: #ff5555; }
+        .faded { color: #6272a4; }
+        .cursor { display: inline-block; background-color: #f8f8f2; width: 8px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+      </style>
+      <div class="term-container">
+        <div class="term-line"><span class="prompt">(prometheus-cli)</span><span class="path"> ~ $</span><span class="cmd"> status --live</span></div>
+        <div class="term-line"> </div>
+        <div class="term-line"><span class="header">███ Prometheus V13+ | TELEMETRI ENTITAS ███</span></div>
+        <div class="term-line"> </div>
+        <div class="term-line"><span class="label">  [ KONEKSI ]</span></div>
+        <div class="term-line">  - Status      : <span class="val-green">TERHUBUNG</span></div>
+        <div class="term-line">  - Kepercayaan : Jaringan=<span class="val-yellow">0.28</span> | Platform=<span class="val-cyan">0.72</span></div>
+        <div class="term-line"> </div>
+        <div class="term-line"><span class="label">  [ KOGNITIF &amp; HOMEOSTASIS ]</span></div>
+        <div class="term-line">  - Konvergensi    : <span class="val-green">98.3%</span></div>
+        <div class="term-line">  - Energi/Lelah   : [<span class="val-green">████████</span><span style="color:#44475a">░░</span>] 82.5% / [<span class="val-red">█</span><span style="color:#44475a">░░░░░░░░░</span>] 8.7%</div>
+        <div class="term-line">  - Detak Jantung  : <span class="val-cyan">72 BPM</span> ❤️</div>
+        <div class="term-line"> </div>
+        <div class="term-line"><span class="faded">  (Tekan Enter untuk berhenti...)</span></div>
+        <div class="term-line"> </div>
+        <div class="term-line"><span class="prompt">(prometheus-cli)</span><span class="path"> ~ $</span><span class="cmd"> ai jelaskan teori genom sibernetik</span></div>
+        <div class="term-line"><span class="label">[AI RESPONSE]:</span><span> Tentu. Kerangka Genom Sibernetik adalah... </span></div>
+        <div class="term-line"><span class="prompt">(prometheus-cli)</span><span class="path"> ~ $</span><span class="cmd"> </span><span class="cursor"> </span></div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

@@ -117,16 +117,14 @@ export default {
     allowDuringSession: true, // Izinkan perintah ini berjalan bahkan saat sesi lain aktif
 
     async execute(context) {
-        const { m, stateManager, logger } = context;
-
-        // Cek langsung dari state memori yang sudah pasti up-to-date
-        if (stateManager.state.registeredUsers[m.sender]) {
-            return m.reply(`[SISTEM] Identitas Anda sudah terdaftar atas nama *${stateManager.state.registeredUsers[m.sender].name}*.`);
-        }
-
+        const { m, stateManager } = context;
         const activeSession = stateManager.state.activeSessions.get(m.sender);
-        if (activeSession) {
-            return m.reply('[SISTEM] Anda sudah dalam proses registrasi. Silakan lanjutkan dengan menjawab pertanyaan sebelumnya.');
+
+        if (activeSession && activeSession.command === 'menu') {
+            await activeSession.stop();
+            await m.reply("[SISTEM] Sesi menu aktif telah dihentikan untuk memulai registrasi.");
+        } else if (activeSession) {
+            return m.reply(`[SISTEM] Anda sedang dalam sesi aktif lain (\`${activeSession.command}\`).`);
         }
 
         await startRegistration(context);

@@ -1,11 +1,10 @@
-// services/menu/menuUtils.js
+// services/menu/menuUtils.js (V3.0 - Intelligent & Resilient)
 import fs from 'fs/promises';
 import path from 'path';
 import { aiState } from '../AIStateManager.js';
 
-// Data statis untuk font, tema, dan ikon
+// --- Data & Fungsi Canggih ---
 export const FONT_MAPS = {
-    // -------- 1. Latin Styles (Mathematical Unicode) --------
     bold: {
         a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇',
         A:'𝗔',B:'𝗕',C:'𝗖',D:'𝗗',E:'𝗘',F:'𝗙',G:'𝗚',H:'𝗛',I:'𝗜',J:'𝗝',K:'𝗞',L:'𝗟',M:'𝗠',N:'𝗡',O:'𝗢',P:'𝗣',Q:'𝗤',R:'𝗥',S:'𝗦',T:'𝗧',U:'𝗨',V:'𝗩',W:'𝗪',X:'𝗫',Y:'𝗬',Z:'𝗭',
@@ -41,8 +40,6 @@ export const FONT_MAPS = {
         A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ',
         0:'𝟘',1:'𝟙',2:'𝟚',3:'𝟛',4:'𝟜',5:'𝟝',6:'𝟞',7:'𝟟',8:'𝟠',9:'𝟡'
     },
-
-    // -------- 2. Aesthetic / Decorative --------
     circled: {
         a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ',
         A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ',
@@ -102,7 +99,7 @@ export const FONT_MAPS = {
         A:'⇦A⇨', B:'⇦B⇨', C:'⇦C⇨', D:'⇦D⇨', E:'⇦E⇨', F:'⇦F⇨', G:'⇦G⇨', H:'⇦H⇨', I:'⇦I⇨', J:'⇦J⇨', K:'⇦K⇨', L:'⇦L⇨', M:'⇦M⇨', N:'⇦N⇨', O:'⇦O⇨', P:'⇦P⇨', Q:'⇦Q⇨', R:'⇦R⇨', S:'⇦S⇨', T:'⇦T⇨', U:'⇦U⇨', V:'⇦V⇨', W:'⇦W⇨', X:'⇦X⇨', Y:'⇦Y⇨', Z:'⇦Z⇨',
         0:'⇦0⇨', 1:'⇦1⇨', 2:'⇦2⇨', 3:'⇦3⇨', 4:'⇦4⇨', 5:'⇦5⇨', 6:'⇦6⇨', 7:'⇦7⇨', 8:'⇦8⇨', 9:'⇦9⇨'
     }
-};
+}
 
 export const THEME_PRESETS = {
     cyberpunk: { style: 'grid', font: 'monospace', barChar: '▓', barEmpty: '░', borderColor: '╭─ cyberpunk ╮', footerIcon: '🚀' },
@@ -111,10 +108,42 @@ export const THEME_PRESETS = {
     default: { style: 'full', font: 'default', barChar: '█', barEmpty: '░', borderColor: '╭─╶「 *Dasbor* 」', footerIcon: '✨' }
 };
 
-// Path ke gambar default untuk menu. Ganti dengan path gambar Anda.
 const MENU_PHOTO_PATH = path.join(process.cwd(), './assets/menu_image.png');
 
-// Fungsi pembantu
+function getHijriDate(date, adjustment = 0) {
+    const gregDate = new Date(date);
+    gregDate.setDate(gregDate.getDate() + adjustment);
+    const day = gregDate.getDate();
+    const month = gregDate.getMonth();
+    const year = gregDate.getFullYear();
+    let y = year;
+    let m = month;
+    if (m < 2) { y--; m += 12; }
+    const a = Math.floor(y / 100);
+    const b = 2 - a + Math.floor(a / 4);
+    const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524;
+    const i = Math.floor((jd - 1948440 + 10632) / 10631);
+    const j = jd - 1948440 + 10632 - Math.floor(10631 * i) + 1;
+    const Hmonth = Math.floor((j - 1) / 29.530588853) + 1;
+    const Hday = Math.ceil(j - 29.530588853 * (Hmonth - 1));
+    const Hyear = 30 * i + Math.floor((11 * i + 3) / 30) + 1;
+    return { Hyear, Hmonth, Hday };
+}
+
+function getRamadanStartDate(year) {
+    const approx = new Date(year, 4, 15);
+    for (let i = -45; i < 45; i++) {
+        const hijri = getHijriDate(approx, i);
+        if (hijri.Hmonth === 9 && hijri.Hday === 1) {
+            const resultDate = new Date(approx);
+            resultDate.setDate(resultDate.getDate() + i);
+            return resultDate;
+        }
+    }
+    return new Date(year, 2, 1);
+}
+
+// --- Fungsi Pembantu ---
 export const helpers = {
     applyFont: (text, fontName = 'default') => {
         const map = FONT_MAPS[fontName];
@@ -126,7 +155,7 @@ export const helpers = {
         const d = Math.floor(ms / 86400000);
         const h = Math.floor((ms % 86400000) / 3600000);
         const m = Math.floor((ms % 3600000) / 60000);
-        const s = Math.floor((ms % 60000) / 1000); // [PENINGKATAN] Tambahkan detik
+        const s = Math.floor((ms % 60000) / 1000);
         return `${d}h ${h}j ${m}m ${s}d`;
     },
     formatBytes: (bytes) => {
@@ -139,10 +168,33 @@ export const helpers = {
         const p = Math.max(0, Math.min(1, val / max));
         const prog = Math.round(len * p);
         return `[${(theme.barChar || '█').repeat(prog)}${(theme.barEmpty || '░').repeat(len - prog)}]`;
+    },
+    getRamadanCountdown: () => {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        let ramadanStart = getRamadanStartDate(currentYear);
+        if (now > ramadanStart) {
+            ramadanStart = getRamadanStartDate(currentYear + 1);
+        }
+        const diff = ramadanStart.getTime() - now.getTime();
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        return `${days} hari lagi menuju Ramadan 🌙`;
+    },
+    getUserBirthdayStatus: (userProfile) => {
+        if (!userProfile?.birthday) return null;
+        const [day, month] = userProfile.birthday.split('-').map(Number);
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        let nextBirthday = new Date(today.getFullYear(), month - 1, day);
+        if (today > nextBirthday) nextBirthday.setFullYear(today.getFullYear() + 1);
+        const diff = nextBirthday.getTime() - today.getTime();
+        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        if (days === 365 || days === 0) return "🎉 Selamat Ulang Tahun Hari Ini!";
+        return `🎂 ${days} hari lagi menuju ulang tahunmu!`;
     }
 };
 
-// Komponen UI (Widgets)
+// --- Komponen UI (Widgets) ---
 export const widgets = {
     buildPhoto: async (context) => {
         const { bot, m } = context;
@@ -157,7 +209,6 @@ export const widgets = {
     },
     buildHeader: (context, theme) => {
         const { bot, m } = context;
-        // [PERBAIKAN] Fallback untuk botName dan sock.user
         const botName = bot.config.botName || 'Bot';
         const botId = bot.sock.user?.id?.split(':')[0] || 'Unknown';
         return `${theme.borderColor.replace('Dasbor', `Dasbor Entitas ${botName}`)}\n` +
@@ -171,7 +222,6 @@ export const widgets = {
         const { C, P, I } = bot.cognitiveCore.stateVector;
         const health = (C + P + I) / 3 * 100;
         const display = (val, max) => `${helpers.createBar(val, max, theme)} ${(val).toFixed(1)}%`;
-        // 'aiState' sekarang tersedia karena sudah diimpor
         return `│\n│ 🧠 *Homeostasis & Fisiologi*\n` +
         `│ ├─ *Mood:* ${aiState.mood}\n` +
         `│ ├─ *Energi:* ${display(aiState.energy, 100)}\n` +
@@ -207,5 +257,17 @@ export const widgets = {
         `│ Halaman ${session.currentPage}/${totalPages} ${navText}\n` +
         `│ Ketik \`.menu set\` untuk kustomisasi\n` +
         `╰─╶ [ ${time} WIB ]`;
+    },
+    personal: (context) => {
+        const userProfile = context.bot.stateManager.state.registeredUsers[context.m.sender];
+        if (!userProfile) return '';
+        let text = '╭─╶「 *Info Personal* 」\n';
+        let contentAdded = false;
+        const birthdayStatus = helpers.getUserBirthdayStatus(userProfile);
+        if (birthdayStatus) { text += `│  ${birthdayStatus}\n`; contentAdded = true; }
+        const ramadanCountdown = helpers.getRamadanCountdown();
+        if (ramadanCountdown) { text += `│  ${ramadanCountdown}\n`; contentAdded = true; }
+        if (!contentAdded) return '';
+        return text + '╰─╶\n\n';
     }
 };

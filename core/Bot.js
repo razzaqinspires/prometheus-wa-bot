@@ -33,6 +33,7 @@ import { DSLM } from '../services/DSLM.js';
 import Logger from '../services/Logger.js';
 import AIServiceManager from '../services/AIServiceManager.js';
 import CLIEngine from './CLIEngine.js'; // Impor CLIEngine
+import GenomeLoader from '../services/GenomeLoader.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(path.dirname(__filename));
@@ -50,11 +51,16 @@ const BOT_OPERATIONAL_STATE = {
 // ║ 🧠 MODUL INTI: COGNITIVE CORE (PREDICTIVE AI & HOMEOSTASIS)                  ║
 // ╚══════════════════════════════════════════════════════════════════════════════╝
 class CognitiveCore {
-    constructor(bot) {
+    constructor(bot, tuningParams = {}) {
         this.bot = bot;
-        this.stateVector = { C: 1, P: 1, I: 1 }; // [Connectivity, Performance, Integrity]
+        this.stateVector = { C: 1, P: 1, I: 1 };
+
+        // Gunakan parameter dari genom, atau fallback ke default jika genom gagal dimuat
+        const defaultPID = { kp: 0.4, ki: 0.05, kd: 0.2 };
         this.pid = {
-            Kp: this.bot.config.ai.pid.kp, Ki: this.bot.config.ai.pid.ki, Kd: this.bot.config.ai.pid.kd,
+            Kp: tuningParams?.pid?.kp ?? defaultPID.kp,
+            Ki: tuningParams?.pid?.ki ?? defaultPID.ki,
+            Kd: tuningParams?.pid?.kd ?? defaultPID.kd,
             lastError: 0, integral: 0, maxIntegral: 50
         };
         this.bayesianBeliefs = { NetworkIssue: 0.5, PlatformIssue: 0.5 };
@@ -228,6 +234,8 @@ class AsyncMutex {
 // ╚══════════════════════════════════════════════════════════════════════════════╝
 export default class Bot {
     constructor() {
+        this.genome = GenomeLoader.load();
+
         // TAHAP 1: Inisialisasi Properti Dasar & Konfigurasi
         this.sock = null;
         this.logger = logger;
@@ -241,7 +249,8 @@ export default class Bot {
         this.config = this._loadConfigSyncAndValidate();
 
         // TAHAP 2: Inisialisasi Modul Inti & Manajer Data (Dependensi)
-        this.cognitiveCore = new CognitiveCore(this);
+        this.cognitiveCore = new CognitiveCore(this, this.genome?.cognitive_tuning); // Suntikkan tuning
+
         this.stateManager = new StateManager(this);
         this.commandManager = new CommandManager(Logger.createChildLogger({ component: 'CommandManager' }));
 
