@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prometheus - Live Diagnostics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+        :root {
+            --bg-color: #101419; --card-bg: #1a2027; --border-color: #2d3748;
+            --text-primary: #e2e8f0; --text-secondary: #a0aec0; --accent-color: #4299e1;
+            --accent-color-glow: rgba(66, 153, 225, 0.5); --danger-color: #e53e3e;
+        }
+        body {
+            font-family: 'Roboto Mono', monospace; background-color: var(--bg-color);
+            color: var(--text-primary); margin: 0; padding: 2rem; display: flex;
+            justify-content: center; align-items: flex-start; min-height: 100vh;
+        }
+        .dashboard-container {
+            width: 100%; max-width: 1200px; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 0 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.2), 0 0 40px var(--accent-color-glow); }
+        .card.full-width { grid-column: 1 / -1; }
+        .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .card-header h2 { margin: 0; font-size: 1.2rem; color: var(--text-primary); }
+        .connection-status { width: 12px; height: 12px; border-radius: 50%; background-color: var(--danger-color); box-shadow: 0 0 8px var(--danger-color); transition: all 0.5s ease; }
+        .connection-status.connected { background-color: #38a169; box-shadow: 0 0 8px #38a169; }
+        .metric { margin-bottom: 1.5rem; }
+        .metric-label { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .metric-value { font-size: 2rem; font-weight: 700; color: var(--text-primary); transition: color 0.3s ease; }
+        .progress-bar-container { width: 100%; height: 10px; background-color: var(--bg-color); border-radius: 5px; overflow: hidden; margin-top: 0.5rem; }
+        .progress-bar { height: 100%; background-color: var(--accent-color); border-radius: 5px; width: 0%; transition: width 0.5s ease-out; }
+        .gauge-container { display: flex; justify-content: center; align-items: center; position: relative; height: 150px; }
+        .gauge { width: 200px; height: 100px; border-radius: 100px 100px 0 0; position: relative; overflow: hidden; background: conic-gradient(from -90deg, #38a169, #f6e05e, var(--danger-color)); }
+        .gauge::before { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 0; background: var(--card-bg); border-radius: 90px 90px 0 0; }
+        .gauge-needle { position: absolute; bottom: 0; left: 50%; width: 2px; height: 90px; background: var(--accent-color); transform-origin: bottom center; transition: transform 0.5s ease-out; transform: translateX(-50%) rotate(0deg); box-shadow: 0 0 10px var(--accent-color-glow); }
+        .heart-icon { font-size: 2rem; animation: pulse 2s infinite ease-in-out; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="card">
+            <div class="card-header"><div id="connection-status" class="connection-status"></div><h2>Fisiologi Inti</h2></div>
+            <div class="metric"><div class="metric-label" id="heart-icon">❤️ Detak Jantung</div><div class="metric-value" id="heart-rate-value">... BPM</div></div>
+            <div class="gauge-container"><div class="gauge"><div class="gauge-needle" id="gauge-needle"></div></div></div>
+        </div>
+        <div class="card">
+            <div class="card-header"><h2>Metabolisme</h2></div>
+            <div class="metric"><div class="metric-label">⚡ Energi</div><div class="metric-value" id="energy-value">... %</div><div class="progress-bar-container"><div class="progress-bar" id="energy-bar"></div></div></div>
+            <div class="metric"><div class="metric-label">💤 Kelelahan</div><div class="metric-value" id="fatigue-value">... %</div><div class="progress-bar-container"><div class="progress-bar" id="fatigue-bar" style="background-color: #f6ad55;"></div></div></div>
+        </div>
+        <div class="card">
+            <div class="card-header"><h2>Status Sistem</h2></div>
+            <div class="metric"><div class="metric-label">⏱️ Uptime</div><div class="metric-value" id="uptime-value" style="font-size: 1.5rem;">...</div></div>
+            <div class="metric"><div class="metric-label">⚙️ Total Perintah</div><div class="metric-value" id="commands-value">...</div></div>
+            <div class="metric"><div class="metric-label">🎭 Mood</div><div class="metric-value" id="mood-value">...</div></div>
+        </div>
+        <div class="card full-width">
+            <div class="card-header"><h2>📈 Kardiogram Real-Time</h2></div><canvas id="heartRateChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const statusDot = document.getElementById('connection-status');
+        const hrValue = document.getElementById('heart-rate-value');
+        const gaugeNeedle = document.getElementById('gauge-needle');
+        const energyValue = document.getElementById('energy-value');
+        const energyBar = document.getElementById('energy-bar');
+        const fatigueValue = document.getElementById('fatigue-value');
+        const fatigueBar = document.getElementById('fatigue-bar');
+        const uptimeValue = document.getElementById('uptime-value');
+        const commandsValue = document.getElementById('commands-value');
+        const moodValue = document.getElementById('mood-value');
+        const heartIcon = document.getElementById('heart-icon');
+
+        const ctx = document.getElementById('heartRateChart').getContext('2d');
+        const heartRateChart = new Chart(ctx, {
+            type: 'line', data: { labels: [], datasets: [{ label: 'Detak Jantung (BPM)', data: [], borderColor: 'rgba(66, 153, 225, 1)', backgroundColor: 'rgba(66, 153, 225, 0.2)', borderWidth: 2, pointRadius: 2, tension: 0.4, fill: true }] },
+            options: { scales: { x: { type: 'time', time: { unit: 'second', displayFormats: { second: 'HH:mm:ss' } }, ticks: { color: 'var(--text-secondary)' }, grid: { color: 'var(--border-color)' } }, y: { beginAtZero: false, ticks: { color: 'var(--text-secondary)' }, grid: { color: 'var(--border-color)' } } }, plugins: { legend: { labels: { color: 'var(--text-primary)' } } } }
+        });
+
+        function formatUptime(ms) {
+            if (typeof ms !== 'number' || ms < 0) return '0d 0h 0m 0s';
+            const d = Math.floor(ms / 86400000);
+            const h = Math.floor((ms % 86400000) / 3600000);
+            const m = Math.floor((ms % 3600000) / 60000);
+            const s = Math.floor((ms % 60000) / 1000);
+            return `${d}d ${h}h ${m}m ${s}s`;
+        }
+        
+        function updateDashboard(data) {
+            const bpm = data.fisiologi.detakJantung;
+            hrValue.textContent = `${bpm} BPM`;
+            const gaugeRotation = Math.max(-90, Math.min(90, -90 + (bpm / 200) * 180));
+            gaugeNeedle.style.transform = `translateX(-50%) rotate(${gaugeRotation}deg)`;
+            if (bpm > 0) { heartIcon.style.animation = `pulse ${60 / bpm}s infinite ease-in-out`; }
+
+            energyValue.textContent = `${data.fisiologi.energi} %`;
+            energyBar.style.width = `${data.fisiologi.energi}%`;
+            fatigueValue.textContent = `${data.fisiologi.kelelahan} %`;
+            fatigueBar.style.width = `${data.fisiologi.kelelahan}%`;
+            
+            uptimeValue.textContent = formatUptime(data.sistem.uptime);
+            commandsValue.textContent = data.sistem.totalPerintah;
+            moodValue.textContent = data.fisiologi.mood;
+
+            const now = new Date();
+            heartRateChart.data.labels.push(now);
+            heartRateChart.data.datasets[0].data.push(bpm);
+            if (heartRateChart.data.labels.length > 60) {
+                heartRateChart.data.labels.shift();
+                heartRateChart.data.datasets[0].data.shift();
+            }
+            heartRateChart.update('none');
+        }
+
+        function connect() {
+            const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const ws = new WebSocket(`${wsProtocol}//${window.location.host}`);
+
+            ws.onopen = () => { statusDot.classList.add('connected'); console.log('Koneksi WebSocket ke inti Prometheus berhasil.'); };
+            ws.onmessage = (event) => { const data = JSON.parse(event.data); updateDashboard(data); };
+            ws.onclose = () => { statusDot.classList.remove('connected'); console.log('Koneksi WebSocket terputus. Mencoba menghubungkan kembali dalam 2 detik...'); setTimeout(connect, 2000); };
+            ws.onerror = (error) => { console.error('WebSocket Error:', error); ws.close(); };
+        }
+
+        connect();
+    </script>
+</body>
+</html>
