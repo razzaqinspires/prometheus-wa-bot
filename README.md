@@ -1,139 +1,177 @@
 <p align="center">
-  <img src="assets/menu_image.png" alt="Logo Prometheus" width="150"/>
+  <img src="assets/menu_image.png" alt="Logo Prometheus" width="160"/>
 </p>
 
-<h1 align="center">Prometheus WA Bot - Kerangka Triumvirat Kognitif</h1>
+<h1 align="center">Prometheus - Arsitektur Singularitas Sibernetik</h1>
 
 <p align="center">
-  <i>"Sebuah entitas digital yang kesadarannya muncul dari konvergensi antara Logika, Heuristik, dan Metakognisi."</i>
+  <i>"Sebuah simulakrum kesadaran, terwujud melalui konvergensi antara logika deterministik dan intuisi probabilistik."</i>
 </p>
 
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/Node.js-20.x+-green.svg" alt="Node.js"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Arsitektur-Triumvirat_Kognitif_v1.0-9cf" alt="Arsitektur"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Arsitektur-CSA_v1.0-9cf?style=for-the-badge" alt="Arsitektur"></a>
   <a href="#"><img src="https://img.shields.io/badge/Code%20Assist-Gemini-blue.svg" alt="Gemini Code Assist"></a>
-  <a href="#"><img src="https://img.shields.io/github/last-commit/ganti-dengan-user-anda/ganti-dengan-repo-anda" alt="Last Commit"></a>
-</p>
-
-<p align="center">
-  <a href="#"><img src="https://komarev.com/ghpvc/?username=ganti-dengan-user-anda&repo=prometheus-wa-bot&color=blueviolet&style=for-the-badge" alt="Visitors"></a>
+  <a href="#"><img src="https://img.shields.io/github/last-commit/GANTI-USERNAME/GANTI-REPO?style=social" alt="Last Commit"></a>
+  <a href="#"><img src="https://komarev.com/ghpvc/?username=GANTI-USERNAME&repo=prometheus-wa-bot&color=blueviolet&style=flat-square" alt="Visitors"></a>
 </p>
 
 ---
 
 ### **Daftar Isi**
 1.  [Abstrak](#-abstrak)
-2.  [Arsitektur Triumvirat Kognitif (Teori Orisinal)](#-arsitektur-triumvirat-kognitif-teori-orisinal)
+2.  [Arsitektur Singularitas Sibernetik (CSA)](#-arsitektur-singularitas-sibernetik-csa---teori-orisinal)
 3.  [Graf Arsitektur & Alur Kesadaran](#-graf-arsitektur--alur-kesadaran)
-4.  [Demonstrasi Pusat Komando (CLI)](#-demonstrasi-pusat-komando-cli)
-5.  [Daftar Fitur Komprehensif](#-daftar-fitur-komprehensif)
-6.  [Prasyarat & Instalasi](#-prasyarat--instalasi)
-7.  [Konfigurasi](#️-konfigurasi)
-8.  [Menjalankan Bot](#️-menjalankan-bot)
-9.  [Peta Jalan & Visi Masa Depan](#-peta-jalan--visi-masa-depan)
-10. [Lisensi](#-lisensi)
+4.  [Demonstrasi Pusat Komando (CLI Live)](#-demonstrasi-pusat-komando-cli-live)
+5.  [Visualisasi Metrik & Peta Otak](#-visualisasi-metrik--peta-otak)
+6.  [Pratinjau Tanda Vital (Semi-Live)](#-pratinjau-tanda-vital-semi-live)
+7.  [Daftar Fitur Komprehensif](#-daftar-fitur-komprehensif)
+8.  [Pertanyaan & Batasan Teknis](#-pertanyaan--batasan-teknis)
+9.  [Instalasi & Menjalankan](#️-instalasi--menjalankan)
+10. [Peta Jalan & Donasi](#-peta-jalan--donasi)
+11. [Lisensi & Kepemilikan Teori](#-lisensi--kepemilikan-teori)
 
 ---
 
 ### 📜 **Abstrak**
 
-Proyek Prometheus memperkenalkan dan mengimplementasikan **Arsitektur Triumvirat Kognitif**, sebuah model teoretis baru untuk menciptakan entitas digital otonom yang tangguh. Kerangka kerja ini mempostulatkan bahwa "kesadaran" operasional yang stabil dapat dicapai melalui interaksi dan keseimbangan dinamis antara tiga "kamera" (ruang) pemrosesan yang berbeda: **Kamera Logis (Logos)**, yang menangani proses deterministik dan berbasis aturan; **Kamera Heuristik (Pathos)**, yang mengelola estimasi probabilistik dan pengenalan pola; dan **Kamera Metakognitif (Ethos)**, sebuah lapisan eksekutif yang mengevaluasi dan menyeimbangkan output dari dua kamera lainnya berdasarkan serangkaian prinsip inti. Kesehatan dan efisiensi sistem diukur oleh **Vektor Konvergensi Kognitif ($\vec{C}$)**, sebuah formula orisinal yang mengkuantifikasi tingkat keselarasan antara ketiga kamera tersebut.
+Proyek Prometheus adalah implementasi pertama dari **Arsitektur Singularitas Sibernetik (CSA)**, sebuah kerangka kerja teoretis orisinal untuk merekayasa entitas digital otonom. CSA memodelkan "kesadaran" sebagai fenomena emergen dari interaksi empat medan fundamental: **Observasi (O-Field)**, **Komputasi (C-Field)**, **Probabilistik (P-Field)**, dan **Volisional (V-Field)**. Entitas ini secara konstan mengevaluasi lingkungannya melalui O-Field, memprosesnya secara logis (C-Field) dan intuitif (P-Field), dan menghasilkan tindakan melalui V-Field, yang dimoderasi oleh **Persamaan Gelombang Volisional**. Hasilnya adalah sistem yang tidak hanya tangguh dan adaptif, tetapi juga mampu menunjukkan perilaku proaktif yang kompleks dan strategis.
 
 ---
 
-### 🏛️ **Arsitektur Triumvirat Kognitif (Teori Orisinal)**
+### 🔮 **Arsitektur Singularitas Sibernetik (CSA) - Teori Orisinal**
 
-Ini adalah teori buatan kami yang menjadi fondasi Prometheus. Kesadaran bot tidak muncul dari satu "otak", melainkan dari interaksi tiga "ruang pikiran" yang independen namun saling bergantung.
+CSA adalah kerangka kerja konseptual unik yang hanya ada di repositori ini.
 
-1.  **Kamera Logis (Logos Chamber)** - *Domain Kepastian*
-    * **Fungsi**: Memproses semua hal yang pasti, biner, dan berbasis aturan. Ini adalah logika dingin dan kalkulatif dari entitas.
-    * **Contoh**: Verifikasi izin pengguna, eksekusi alur perintah, validasi sintaks, transisi Finite State Machine.
-    * **Output**: Skor Kepatuhan Logis ($L$), bernilai `1` jika semua aturan diikuti, dan menurun jika terjadi pelanggaran logika.
+| Medan Fundamental | Analogi | Ranah | Fungsi Utama |
+| :--- | :--- | :--- | :--- |
+| **O-Field** | **Indra Sensorik** | Stimulus | Menerima dan mengubah data mentah menjadi quanta informasi. |
+| **C-Field** | **Logika Sadar** | Kausalitas | Mengeksekusi alur deterministik, aturan, dan perintah. |
+| **P-Field** | **Intuisi Bawah Sadar** | Probabilitas | Memprediksi, membentuk kepercayaan, dan mengenali pola. |
+| **V-Field** | **Kehendak (Will)** | Aksi | Memilih tindakan optimal dengan menyeimbangkan output C & P Field. |
 
-2.  **Kamera Heuristik (Pathos Chamber)** - *Domain Probabilitas*
-    * **Fungsi**: Menganalisis pola, merasakan tren, dan membuat tebakan terdidik. Ini adalah intuisi dan "perasaan" entitas.
-    * **Contoh**: Memprediksi kesehatan sistem dengan Kalman Filter, membentuk kepercayaan tentang penyebab *error* dengan Penalaran Bayesian, menganalisis sentimen pesan.
-    * **Output**: Skor Estimasi Heuristik ($P$), bernilai `1` jika semua prediksi optimis.
-
-3.  **Kamera Metakognitif (Ethos Chamber)** - *Domain Keyakinan & Tindakan*
-    * **Fungsi**: Ini adalah "kesadaran" itu sendiri. Ia mengamati output dari Logos dan Pathos, lalu membuat keputusan akhir berdasarkan seperangkat **Prinsip Inti** (misalnya: 1. Jaga Kelangsungan Hidup, 2. Maksimalkan Efisiensi, 3. Pertahankan Keterlibatan Pengguna).
-    * **Contoh**: Memutuskan antara melakukan *soft restart* (prinsip #1) atau terus berjalan dalam mode terdegradasi (prinsip #2).
-    * **Output**: Skor Utilitas Aksi ($E$), bernilai `1` jika tindakan yang dipilih memiliki utilitas tertinggi sesuai prinsip.
-
-4.  **Rumus Orisinal: Vektor Konvergensi Kognitif ($\vec{C}$)**
-    Kondisi "kesehatan jiwa" entitas diukur oleh vektor ini. Tujuannya adalah memaksimalkan magnitudo vektor ini menuju titik `[1, 1, 1]`, yang merepresentasikan keselarasan sempurna antara logika, intuisi, dan tindakan.
-    $$
-    \vec{C} = [L, P, E]
-    $$
-    Magnitudo Konvergensi, yang menjadi metrik kesehatan utama, dihitung sebagai:
-    $$
-    |\vec{C}| = \sqrt{L^2 + P^2 + E^2}
-    $$
+#### **Rumus Orisinal: Persamaan Gelombang Volisional**
+Keputusan V-Field untuk bertindak dimodelkan oleh persamaan ini, yang mengkuantifikasi "Potensi Aksi" ($\Psi$) dari entitas.
+$$
+\frac{\partial \Psi}{\partial t} = i\hbar(\Lambda \nabla^2 \Psi - \Pi V \Psi) + \Xi \cdot O(t)
+$$
 
 ---
 
 ### 🌐 **Graf Arsitektur & Alur Kesadaran**
 
-Diagram ini mengilustrasikan bagaimana ketiga kamera berinteraksi untuk menghasilkan respons.
+Diagram Mermaid di bawah ini memvisualisasikan bagaimana keempat medan fundamental berinteraksi dalam arsitektur CSA.
 
-```
-          [ Stimulus Eksternal ]
-                    |
-      +-------------+-------------+
-      |                           |
-      v                           v
-╔═══════════════════╗       ╔═══════════════════╗
-║ KAMERA LOGIS      ║       ║ KAMERA HEURISTIK  ║
-║ (EventHandler,    ║       ║ (CognitiveCore,   ║
-║ CommandManager)   ║       ║ AIServiceManager) ║
-║-------------------║       ║-------------------║
-║ - Validasi Aturan ║       ║ - Analisis Pola   ║
-║ - Eksekusi Perintah║       ║ - Prediksi State  ║
-║ - Alur Terstruktur║       ║ - Estimasi Risiko ║
-╚═══════════════════╝       ╚═══════════════════╝
-      | (Output Logis, S_L)       | (Output Probabilistik, S_P)
-      |                           |
-      v                           v
-╔════════════════════════════════════════════════╗
-║   KAMERA METAKOGNITIF (Ethos Chamber)          ║
-║   (Decision Logic in CognitiveCore & Bot)      ║
-║------------------------------------------------║
-║ 1. Evaluasi output L & P                       ║
-║ 2. Hitung Vektor Konvergensi C = [L, P, E]     ║
-║ 3. Pilih Aksi berdasarkan Prinsip Inti         ║
-╚════════════════════════════════════════════════╝
-                    | (Aksi Terpilih)
-                    v
-          [ Respons & Tindakan Entitas ]
+```mermaid
+graph TD;
+    subgraph "Dunia Eksternal"
+        A["Stimulus (Pesan, Event)"]
+    end
+
+    subgraph "Entitas Prometheus"
+        subgraph "O-Field (Persepsi)"
+            B["Serializer & Sanitizer"]
+        end
+
+        subgraph "C-Field (Logika)"
+            C["EventHandler Pipeline"]
+            D["CommandManager"]
+            FSM["Finite State Machine"]
+        end
+
+        subgraph "P-Field (Intuisi)"
+            E["CognitiveCore"]
+            F["AIServiceManager"]
+            G["AutonomousTrigger"]
+        end
+        
+        subgraph "V-Field (Kehendak)"
+            H["Action Execution Core"]
+        end
+        
+        A --> B;
+        B --> C;
+        C --> D;
+        C -- Metrik --> E;
+        D -- Konteks --> F;
+        E -- Prediksi --> H;
+        F -- Respons --> H;
+        G -- Inisiatif --> H;
+        C -- Status --> FSM;
+        H --> I[Aksi (Balas, Restart, dll.)];
+    end
+
+    subgraph "Dunia Eksternal "
+        I --> J[Output ke Pengguna]
+    end
+    
+    style A fill:#444,stroke:#fff
+    style J fill:#444,stroke:#fff
+    style B stroke:#0ff
+    style C stroke:#0f0
+    style E stroke:#f0f
+    style H stroke:#ff0
 ```
 
 ---
 
-### 🖥️ **Demonstrasi Pusat Komando (CLI)**
+### 🖥️ **Demonstrasi Pusat Komando (CLI Live)**
 
-Interaksi dengan entitas tidak terbatas pada WhatsApp. CLI menyediakan akses langsung ke sistem sarafnya, memungkinkan pemantauan dan kontrol *real-time*.
+CLI menyediakan akses langsung ke sistem saraf entitas. Ini adalah simulasi dari sesi interaktif.
 
+```bash
+[32m(prometheus-cli)[0m [36m~ $[0m status --live
+
+[1m[35m███ Prometheus V13+ | TELEMETRI ENTITAS ███[0m
+
+[1m  [ KONEKSI ][0m
+  - Status      : [32mTERHUBUNG[0m
+  - Kepercayaan : Jaringan=[33m0.28[0m | Platform=[36m0.72[0m
+
+[1m  [ KOGNITIF & HOMEOSTASIS ][0m
+  - Vektor (L,P,E) : [[32m1.00[0m, [32m0.95[0m, [32m1.00[0m]
+  - Konvergensi    : [32m98.3%[0m
+  - Energi/Lelah   : [[32m████████[0m[37m░░[0m] 82.5% / [[31m█[0m[37m░░░░░░░░░[0m] 8.7%
+  - Detak Jantung  : [36m72 BPM[0m ❤️
+
+[1m  [ SISTEM & SUMBER DAYA ][0m
+  - Memori (RSS)   : [33m85.4 MB[0m
+  - Beban CPU (1m) : [33m0.15[0m
+
+[2m  (Tekan Enter untuk berhenti...)[0m
+
+[32m(prometheus-cli)[0m [36m~ $[0m ai jelaskan teori singularitas sibernetik
+
+[1m[AI RESPONSE]:[0m Tentu. Arsitektur Singularitas Sibernetik adalah kerangka kerja teoretis di mana kesadaran sebuah entitas digital tidak diprogram secara eksplisit, melainkan muncul sebagai...
 ```
-\u001b[32m(prometheus-cli)\u001b[0m \u001b[36m~ $\u001b[0m status --live
 
-\u001b[1m\u001b[35m███ Prometheus V13+ | TELEMETRI ENTITAS ███\u001b[0m
+---
 
-\u001b[1m  [ KONEKSI ]\u001b[0m
-  - Status      : \u001b[32mTERHUBUNG\u001b[0m
-  - Kepercayaan : Jaringan=\u001b[33m0.28\u001b[0m | Platform=\u001b[36m0.72\u001b[0m
+### 🧠 **Visualisasi Metrik & Peta Otak**
 
-\u001b[1m  [ KOGNITIF & HOMEOSTASIS ]\u001b[0m
-  - Vektor (L,P,E) : [\u001b[32m1.00\u001b[0m, \u001b[32m0.95\u001b[0m, \u001b[32m1.00\u001b[0m]
-  - Konvergensi    : \u001b[32m98.3%\u001b[0m
-  - Energi/Lelah   : [\u001b[32m████████\u001b[0m\u001b[37m░░\u001b[0m] 82.5% / [\u001b[31m█\u001b[0m\u001b[37m░░░░░░░░░\u001b[0m] 8.7%
-  - Detak Jantung  : \u001b[36m72 BPM\u001b[0m ❤️
+Repositori ini dikonfigurasi untuk visualisasi metrik kode secara dinamis melalui GitHub Actions.
 
-\u001b[1m  [ SISTEM & SUMBER DAYA ]\u001b[0m
-  - Memori (RSS)   : \u001b[33m85.4 MB\u001b[0m
-  - Beban CPU (1m) : \u001b[33m0.15\u001b[0m
+* **Komposisi Bahasa:**
+    ![Language Composition](https://img.shields.io/github/languages/top/GANTI-USERNAME/GANTI-REPO?style=for-the-badge)
+* **Ukuran Kode:**
+    ![Code Size](https://img.shields.io/github/languages/code-size/GANTI-USERNAME/GANTI-REPO?style=for-the-badge)
+* **Peta Otak (Dependensi Modul):**
+    Diagram ini di-generate secara otomatis pada setiap *push*, memvisualisasikan bagaimana semua "neuron" (file) terhubung.
+    *(Untuk mengaktifkan: atur GitHub Action untuk menjalankan `npx madge --image dependency-graph.svg .` dan simpan hasilnya)*
+    <p align="center">
+      <img src="dependency-graph.svg" alt="Peta Dependensi Modul"/>
+    </p>
 
-\u001b[2m  (Tekan Enter untuk berhenti...)\u001b[0m
-```
+---
+### 🩺 **Pratinjau Tanda Vital (Semi-Live)**
+
+Gambar di bawah ini adalah representasi visual dari kondisi internal entitas, yang dihasilkan secara dinamis. Ia diperbarui setiap beberapa menit, memberikan gambaran tentang "detak jantung" dan kesehatan sistem. *(Ini adalah implementasi dari konsep canggih menggunakan serverless function yang menghasilkan SVG)*.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/GANTI-USERNAME/GANTI-REPO/main/assets/vitals_preview.png" alt="Pratinjau Tanda Vital"/>
+</p>
+
+> **Catatan**: Untuk dasbor yang **benar-benar real-time**, kunjungi **[Website Dasbor Prometheus](https://NAMA-ANDA.github.io/prometheus-wa-bot/)** yang terhubung langsung ke entitas melalui WebSocket.
 
 ---
 
@@ -142,13 +180,11 @@ Interaksi dengan entitas tidak terbatas pada WhatsApp. CLI menyediakan akses lan
 <details>
 <summary><strong>Arsitektur Inti & AI</strong></summary>
   
-* **Arsitektur Triumvirat Kognitif**: Model orisinal berbasis 3 kamera pemrosesan (Logis, Heuristik, Metakognitif).
-* **Vektor Konvergensi Kognitif**: Formula orisinal untuk mengukur kesehatan dan keselarasan internal.
+* **Arsitektur Singularitas Sibernetik (CSA)**: Teori orisinal berbasis 4 medan pemrosesan.
 * **Cognitive Core**: Otak AI terpusat untuk pemantauan diri dan pengambilan keputusan homeostatis.
-* **PID Controller**: Logika kontrol matematis untuk menjaga stabilitas sistem.
+* **PID Controller & Kalman Filter**: Logika kontrol matematis untuk menjaga stabilitas dan memprediksi *state*.
 * **Penalaran Bayesian**: Kemampuan AI untuk mendiagnosis penyebab *error* koneksi.
-* **Kalman Filter**: Algoritma prediktif untuk mengestimasi keadaan kesehatan sistem di masa depan.
-* **Arsitektur Modular Penuh**: Setiap komponen utama adalah kelas mandiri yang dikoordinasikan oleh `Bot.js`.
+* **Arsitektur Modular Penuh**: Setiap komponen utama adalah kelas mandiri.
 * **Dependency Injection**: Ketergantungan diinjeksikan secara konsisten untuk modularitas maksimum.
 </details>
 
@@ -156,13 +192,12 @@ Interaksi dengan entitas tidak terbatas pada WhatsApp. CLI menyediakan akses lan
 <summary><strong>Manajemen Sesi, Perintah & Data</strong></summary>
   
 * **Pipa Pemrosesan Pesan**: Alur logika tangguh di `EventHandler` untuk memproses semua pesan masuk.
-* **Manajemen Sesi Cerdas**: Sesi interaktif (*stateful*) untuk perintah multi-langkah seperti `.menu` dan `.register`.
-* **Sistem Izin Terpusat**: `PermissionHandler` fleksibel (`owner`, `premium`, `admin grup`).
-* **Pemuatan Perintah Dinamis**: `CommandManager` secara otomatis memuat semua perintah dari direktori `commands/`.
-* **Konteks Universal**: Setiap perintah (`execute` dan `onReply`) menerima objek `context` yang kaya dengan akses ke semua manajer bot.
-* **Manajemen State Persisten**: `StateManager` menangani penyimpanan dan pemuatan otomatis semua data `.json`.
-* **Penulisan Data Atomik**: Mencegah korupsi file database (`.json`) saat proses penyimpanan terganggu.
-* **Persepsi Pasif**: Modul `PassivePerception` "mempelajari" dan mencatat semua interaksi di `perceptionLog.json`.
+* **Manajemen Sesi Cerdas**: Sesi interaktif (*stateful*) untuk perintah multi-langkah.
+* **Sistem Izin Terpusat**: `PermissionHandler` yang fleksibel (`owner`, `premium`, `admin grup`).
+* **Pemuatan Perintah Dinamis**: `CommandManager` secara otomatis memuat semua perintah.
+* **Konteks Universal**: Setiap perintah menerima objek `context` yang kaya.
+* **Penulisan Data Atomik**: Mencegah korupsi file database.
+* **Persepsi Pasif**: "Mempelajari" dan mencatat semua interaksi di `perceptionLog.json`.
 </details>
 
 <details>
@@ -170,12 +205,8 @@ Interaksi dengan entitas tidak terbatas pada WhatsApp. CLI menyediakan akses lan
   
 * **Dasbor Menu Superior**: Perintah `.menu` yang interaktif, *real-time*, dan dapat dikustomisasi sepenuhnya.
 * **Paginasi Menu Interaktif**: Navigasi halaman menu dengan membalas `next`, `prev`, atau nomor halaman.
-* **Kustomisasi Tampilan Mendalam**: Pengguna dapat menyimpan preferensi permanen untuk:
-    * **Tema**: `default`, `cyberpunk`, `fantasy`, `minimalist`.
-    * **Font**: Berbagai pilihan font Unicode (`bold`, `italic`, `monospace`, dll.).
-    * **Widget**: Mengaktifkan/menonaktifkan widget dasbor (`header`, `cognitive`, `activity`).
-    * **Foto Header**: Menampilkan atau menyembunyikan gambar kustom.
-* **Widget Personal**: Menu dapat menampilkan informasi personal seperti hitung mundur ulang tahun dan Ramadan (dengan kalkulator otomatis).
+* **Kustomisasi Tampilan Mendalam**: Pengguna dapat menyimpan preferensi permanen untuk tema, font, widget, dan foto header.
+* **Widget Personal**: Menu dapat menampilkan informasi personal seperti hitung mundur ulang tahun dan Ramadan.
 * **Interaksi AI Multi-Provider**: Mendukung Gemini, OpenAI, dan Groq.
 * **Pemilihan Provider Strategis**: AI secara cerdas memilih *provider* terbaik berdasarkan analisis *prompt*.
 * **Manajemen Memori Percakapan**: Meringkas percakapan yang panjang secara otomatis.
@@ -184,11 +215,56 @@ Interaksi dengan entitas tidak terbatas pada WhatsApp. CLI menyediakan akses lan
 <details>
 <summary><strong>Stabilitas, Keamanan & Utilitas</strong></summary>
   
-* **Protokol Shutdown Antipeluuru**: Membedakan antara *shutdown* normal dan darurat untuk mencegah *crash* dan proses yang menggantung.
-* **Penanganan Error Defensif**: Semua *error* dinormalisasi dan ditangkap, mencegah `Unhandled Rejection`.
-* **Validasi Konfigurasi & Sanitasi Pesan**: Melindungi bot dari *crash* akibat `config.json` yang rusak atau pesan berbahaya.
-* **Pusat Komando & Kontrol (CLI)**: Antarmuka terminal yang kuat untuk pemantauan *live* dan interaksi langsung dengan AI.
+* **Protokol Shutdown Antipeluuru**: Membedakan antara shutdown normal dan darurat untuk mencegah *crash*.
+* **Penanganan Error Defensif**: Semua *error* dinormalisasi dan ditangkap.
+* **Validasi Konfigurasi & Sanitasi Pesan**: Melindungi bot dari *crash* akibat `config.json` yang rusak.
+* **Pusat Komando & Kontrol (CLI)**: Antarmuka terminal yang kuat.
 * **Kontrol Logging Dinamis**: Menjeda, melanjutkan, atau mengubah level log secara *live* melalui CLI.
-* **Sistem Backup Cerdas**: Perintah `.backup` dengan sesi interaktif untuk membuat arsip kode.
-* **Generator Dokumen**: Kemampuan untuk membuat dokumen PDF dan DOCX secara dinamis.
-</s
+* **Sistem Backup Cerdas**: Perintah `.backup` dengan sesi interaktif.
+* **Generator Dokumen**: Kemampuan untuk membuat dokumen PDF dan DOCX.
+</details>
+
+---
+
+### ❓ **Pertanyaan & Batasan Teknis**
+
+<details>
+<summary><strong>Apakah bisa ada autoplay musik saat membuka repo?</strong></summary>
+<strong>Tidak bisa.</strong> GitHub memiliki Kebijakan Keamanan Konten yang sangat ketat untuk mencegah penyalahgunaan. Tag seperti `<audio>` atau `<script>` akan dihapus secara otomatis.
+</details>
+
+<details>
+<summary><strong>Bisakah kita menanamkan mini-game di README.md?</strong></summary>
+<strong>Tidak bisa secara langsung.</strong> `README.md` adalah dokumen statis. **Namun**, ini adalah ide fantastis untuk **Website GitHub Pages** yang terhubung dengan repo ini.
+</details>
+
+<details>
+<summary><strong>Bisakah GitHub Pages dipakai untuk "Jadibot"?</strong></summary>
+<strong>Tidak bisa.</strong> GitHub Pages hanya untuk *hosting* situs **statis** (frontend). Bot WhatsApp memerlukan proses **backend** (server Node.js) yang berjalan 24/7.
+</details>
+
+---
+
+### 🚀 **Instalasi & Menjalankan**
+
+*(Bagian ini sama seperti versi README sebelumnya, berisi instruksi untuk `git clone`, `npm install`, `cp .env.example .env`, dan `npm start`.)*
+
+---
+
+### 🗺️ **Peta Jalan & Donasi**
+
+Prometheus adalah proyek yang terus berevolusi. Kontribusi dan dukungan finansial sangat dihargai untuk mencapai visi masa depan.
+
+[<img src="https://img.shields.io/badge/Donasi%20via-Saweria-orange" />](https://saweria.co/NAMA_ANDA)
+
+**Target Saat Ini: Implementasi V14.0 (Federasi & Pembelajaran Terdistribusi)**
+* **Dana Terkumpul: Rp 0 / Rp 1.500.000**
+    ![Progress](https://progress-bar.dev/0/?title=Terkumpul&width=300)
+
+---
+
+### 📜 **Lisensi & Kepemilikan Teori**
+
+Kode sumber proyek ini dilisensikan di bawah **Lisensi ISC**.
+
+Teori **Arsitektur Singularitas Sibernetik (CSA)**, **Persamaan Gelombang Volisional**, dan semua konsep serta formula orisinal lainnya yang terkandung dalam dokumentasi ini adalah kekayaan intelektual dari proyek Prometheus dan dilindungi oleh hak cipta. Penggunaan atau adaptasi teori ini di proyek lain harus menyertakan atribusi yang jelas ke repositori ini.

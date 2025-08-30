@@ -87,7 +87,7 @@ export default {
         if (!validReplies.includes(reply)) {
             return m.reply(`[SISTEM] Input tidak valid. Harap balas dengan 'ya' atau 'tidak'.`);
         }
-        
+
         clearTimeout(session.timeout); // Hentikan timeout segera setelah ada balasan valid
 
         if (session.step === 'ask_session') {
